@@ -1,9 +1,6 @@
 class Destinations {
-  constructor(destinData) {
-    this.id = destinData.id;
-    this.destination = destinData.destination;
-    this.estimatedLodgingCostPerDay = destinData.estimatedLodgingCostPerDay;
-    this.estimatedFlightCostPerPerson = destinData.estimatedFlightCostPerPerson;
+  constructor() {
+    
 
   }
 
