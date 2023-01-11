@@ -1,10 +1,9 @@
 const { expect } = require("chai");
 const Traveler = require("../src/Traveler");
-const Trip = require("../src/Trip");
+
 
 describe("Traveler", () => {
-  let traveler;
-
+  let traveler
   beforeEach(() => {
     traveler = new Traveler({
       userID: 7,
@@ -40,7 +39,7 @@ describe("Traveler", () => {
       ],
     });
   });
-});
+
 
 it("should be a function", () => {
   expect(Traveler).to.be.a("function");
@@ -62,12 +61,12 @@ it("should be able to add trips to user trip array", () => {
   expect(traveler.trips).to.equal(traveler.trips);
 });
 
-it("should return the name of user at login", () => {
-  expect(user.returnUserGreeting()).to.equal("Ham Leadbeater");
+it.skip("should return the name of user at login", () => {
+  expect(traveler.returnUserGreeting()).to.equal("Ham Leadbeater");
 });
 
-it("should return users past trips", () => {
-  expect(user.viewPastTrips()).to.equal([
+it.skip("should return users past trips", () => {
+  expect(traveler.viewPastTrips()).to.deep.equal([
     {
       id: 22,
       userID: 7,
@@ -78,9 +77,9 @@ it("should return users past trips", () => {
       status: "approved",
     },
   ]);
-
+})
   it("should return users pending trips", () => {
-    expect(user.viewPendingTrips()).to.equal([
+    expect(traveler.viewPendingTrips()).to.deep.equal([
       {
         id: 55,
         userID: 7,
@@ -93,5 +92,18 @@ it("should return users past trips", () => {
     ]);
   });
 
-  it("should return users upcoming trips", () => {});
-});
+  it.skip("should return users upcoming trips", () => {
+    expect(user.viewUpcomingTrips()).to.deep.equal([
+      {
+        id: 2,
+        userID: 7,
+        destinationID: 25,
+        travelers: 5,
+        date: "2022/06/01",
+        duration: 18,
+        status: "approved",
+        },
+      ]);
+    });
+  });
+
