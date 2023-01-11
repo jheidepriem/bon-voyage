@@ -16,3 +16,50 @@
           </section>
       <section class="login-center">
         <h1>SIGN IN</h1>
+        <h2>The Only Trip You'll Regret, is the One You Don't Take</h2>
+        <input class="user-name-input" id="userNameInput" type="text" placeholder="username" required />
+        <input class="password-input" id="passwordInput" type="password" placeholder="password" required />
+        <h2 class="login-feedback" id="loginFeedback"></h2>
+        <button class="login-button" id="loginButton">Sign In</button>
+      </section>
+    </section>
+    <section class="main-dashboard" id='mainDashboard'>
+      <section class="travel-tracker-logo">
+        <img class="app-logo" src="../images/bon-voyage7small.jpg" alt="Palm trees, beach, and sun logo" />
+        <h1 class="application-title">BON VOYAGE</h1>
+      </section>
+      <section class="yearly-expenses">
+        <h2 class="total-spent">Yearly Expenses:</h2>
+        <h2 class="price" id="yearlyexpenses"></h2>
+      </section>
+    </section>
+        <section class="user=greeting">
+          <h1 class="user-greeting-header" placeholder="hello-message">Hello, Josephine!</h1>
+        </section>
+        <section class="search-destinations-section">
+          <form class="new-trip-inputs">
+            <input class="date-input" id="dateInput" type="date" value="yyyy-MM-dd" placeholder="date" required />
+            <input class="duration-input" id="durationInput" type="number" min="1" placeholder="duration" required />
+            <input class="number-travelers-input" id="numberOfTravelersInput" type="number" min="1" placeholder="# of travelers" required />
+            <select class="destination-drop-down" name="dropDown" id="dropDownMenuDestinations" required>
+              <option value="" disabled selected >Destinations</option>
+            </select>
+          </form>
+          <section class="submit-button-section">
+            <button class="submit-button" id="submitButton">Let's Go!</button>
+          </section>
+        </section>
+        <section class="trip-cost-total">
+          <h2 class="trip-total" id="tripestimate">Trip Estimate:</h2>
+        </section>
+        <section class="all-trips-container">
+          <section class="past-trip-section">
+            <section class="'header">
+            <h2 class="past-trip-header" id="pasttrips">My Past Trips</h2>
+            </section>
+          </section>
+          <section class="pending-trip-section">
+            <section class="header">
+              <h2 class="pending-trip-header" id="pendingtrips">My Pending Trips</h2>
+            </section>
+          </section>
