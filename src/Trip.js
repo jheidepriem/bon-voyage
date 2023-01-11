@@ -1,6 +1,10 @@
 class Trip {
-  constructor(id, data) {
-    this.id = id;
-    this.tripData = data.filter((obj) => obj.userID === this.id);
+  constructor(tripData) {
+    this.tripData = tripData
+  }
+
+
+returnDestination(id) {
+  return this.tripData = data.filter(user => user.userID === id);
   }
 }
