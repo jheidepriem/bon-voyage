@@ -1,9 +1,21 @@
 class Traveler {
   constructor(travelerData) {
-    this.id = travelerData.id;
+    this.userID = travelerData.userID;
     this.name = travelerData.name;
-    this.trips = []
+    this.trips = [];
     }
 }
+
+// viewPendingTrips() {
+
+// }
+
+// viewPastTrips() {
+
+// }
+
+// viewFutureTrips(){
+
+// }
 
 module.exports = Traveler;
