@@ -1,6 +1,8 @@
 class Traveler {
-  constructor(id, data) {
-    this.id = id;
-    this.travelerData = data.filter((obj) => obj.userID === this.id);
-  }
+  constructor(traveler) {
+    this.id = traveler.id;
+    this.name = traveler.name;
+    this.travelerType = traveler.travelerType;
+    this.trips = traveler.trips;
+    }
 }
