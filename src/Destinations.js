@@ -1,12 +1,21 @@
 class Destinations {
-  constructor(destinationData) {
-    this.destinationData = destinationData
-  }
+  constructor(destinData) {
+    this.id = destinData.id;
+    this.destination = destinData.destination;
+    this.estimatedLodgingCostPerDay = destinData.estimatedLodgingCostPerDay;
+    this.estimatedFlightCostPerPerson = destinData.estimatedFlightCostPerPerson;
 
+  }
 
 returnDestination(id) {
-  return this.destinationData.find(destination =>  destination.id === id);
+  return this.destinData.find(destination =>  destination.id === id);
   }
+
+
+
+
+
+
 
 
 
