@@ -1,5 +1,15 @@
 class Destinations {
-  constructor(id, data) {
-    
+  constructor(destinationData) {
+    this.destinationData = destinationData
   }
+
+
+returnDestination(id) {
+  return this.destinationData.find(destination =>  destination.id === id);
+  }
+
+
+
+
+
 }
