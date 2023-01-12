@@ -5,10 +5,6 @@ class Destinations {
 }
 
 
-returnDestination(id) {
-  return ;
-  }
-
 
 
 
@@ -20,3 +16,4 @@ returnDestination(id) {
 
 
 }
+module.exports = Destinations;
