@@ -28,7 +28,7 @@ return futureTrips
 
 }
 
-calculateYearlyTripCost(destinations) {
+calculateTripCost(destinations) {
   let tripTotal = destinations.reduce((sum, destination) => {
    this.trips.forEach(trip => {
       if(trip.destinationID === destinations.id) {
@@ -42,7 +42,11 @@ calculateYearlyTripCost(destinations) {
   }
 }
 
+calculateYearlyExpenses() {
   
+}
+  
+
  
   
   
