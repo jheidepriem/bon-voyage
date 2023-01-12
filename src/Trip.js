@@ -1,17 +1,28 @@
+const Traveler = require("./Traveler");
+
 class Trip {
-  constructor(tripData) {
-    this.userID = tripData.id;
+  constructor(data) {
+    this.data = data;
   }
 
-  returnDestination(id) {
-  return this.tripData = data.filter(user => user.userID === id);
+  findTripByTripId(id) {
+    return this.data.filter(trip => trip.id === id);
+  }
+
+  findTripByDestinationId(destinId) {
+    return this.data.filter(trip => trip.destinationID === destinId);
+  }
+
+  retrieveNumTravelers(travelers) {
+    return this.data.filter(trip => trip.travelers === travelers)
+  }
+
+  retrieveTripDuration(duration) {
+    return this.data.filter(trip => trip.duration === duration)
   }
 
 
-//create cost for pending trips, takes in destination cost parameters
-
-
-
+  
 
 
 }
