@@ -7,21 +7,28 @@ class Traveler {
     }
 
 
+returnUserGreeting() {
+    return this.name.split(" ")[0];
+  }
+
 viewPendingTrips() {
-return this.trips.filter(trip => trip.status === 'pending')
+const past = this.trips.filter(trip => trip.status === 'pending')
+return past
 }
 
 viewPastTrips() {
-return this.trips.filter(trip => dayjs(trip.date)).isBefore(dayjs('2021/01/01')) 
+const past = this.trips.filter(trip => dayjs(trip.date).isBefore('2021/01/01')) 
+return past 
 
 }
 
-viewFutureTrips(){
-return this.trips.filter(trip => dayjs(trip.date)).isAfter('2021/01/01')
+viewUpcomingTrips(){
+const futureTrips = this.trips.filter(trip => dayjs(trip.date).isAfter('2021/01/01'))
+return futureTrips
 
 }
 
-calculateTripCost() {
+calculateYearlyTripCost() {
   
 }
 
