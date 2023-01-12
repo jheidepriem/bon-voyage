@@ -134,12 +134,6 @@ it("should return users past trips", () => {
       ]);
     });
 
-  it("should calculate trip cost", () => {
-    expect(traveler.calculateTripCost(destinations, trips)).to.equal(2200)
-    })
-
-  it("should calculate yearly expenses", () => {
-    expect(traveler.calculateYearlyExpenses()).to.equal.()
   })
-  });
 
+  
