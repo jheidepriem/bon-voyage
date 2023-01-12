@@ -118,3 +118,7 @@ input {
   display: flex;
   justify-content: center;
 }
+
+.destination-drop-down {
+  overflow: scroll;
+}
