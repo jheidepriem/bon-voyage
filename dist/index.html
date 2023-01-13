@@ -19,7 +19,7 @@
         <h2>The Only Trip You'll Regret, is the One You Don't Take</h2>
         <input class="user-name-input" id="userNameInput" type="text" placeholder="username" required />
         <input class="password-input" id="passwordInput" type="password" placeholder="password" required />
-        <h2 class="login-feedback" id="loginFeedback"></h2>
+        <h2 class="login-message" id="loginMessage"></h2>
         <button class="login-button" id="loginButton">Sign In</button>
       </section>
     </section>
@@ -33,8 +33,8 @@
         <h2 class="price" id="yearlyexpenses"></h2>
       </section>
     </section>
-        <section class="user=greeting">
-          <h1 class="user-greeting-header" placeholder="hello-message">Hello, Josephine!</h1>
+        <section class="user-greeting" id="userGreeting">
+          <h1 class="user-greeting-header" id="userGreetingHeader" placeholder="hello-message">Hello, Josephine!</h1>
         </section>
         <section class="search-destinations-section">
           <form class="new-trip-inputs">
@@ -48,24 +48,27 @@
           <section class="submit-button-section">
             <button class="submit-button" id="submitButton">Let's Go!</button>
           </section>
+          <section class="back-button-section">
+            <button class="back-button" id="backButton">Go Back</button>
+          </section>
         </section>
         <section class="trip-cost-total">
-          <h2 class="trip-total" id="tripestimate">Trip Estimate:</h2>
+          <h2 class="trip-total" id="tripEstimate">Trip Estimate:</h2>
         </section>
         <section class="all-trips-container">
-          <section class="past-trip-section">
+          <section class="past-trip-section" id="pastTrips">
             <section class="'header">
-            <h2 class="past-trip-header" id="pasttrips">My Past Trips</h2>
+            <h2 class="past-trip-header"></h2>My Past Trips</h2>
             </section>
           </section>
-          <section class="pending-trip-section">
+          <section class="pending-trip-section" id="pendingtrips">
             <section class="header">
-              <h2 class="pending-trip-header" id="pendingtrips">My Pending Trips</h2>
+              <h2 class="pending-trip-header">My Pending Trips</h2>
             </section>
           </section>
-          <section class="upcoming-trips-section">
+          <section class="upcoming-trips-section" id="upcomingtrips">
             <section class="header">
-              <h2 class="upcoming-trip-header" id="upcomingtrips">My Upcoming Trips</h2>
+              <h2 class="upcoming-trip-header"></h2>My Upcoming Trips</h2>
             </section>
           </section>
         </section>
