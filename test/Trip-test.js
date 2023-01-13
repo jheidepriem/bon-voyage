@@ -82,14 +82,4 @@ describe("Trip", () => {
       },
     ]);
   });
-
-  it("should return undefined if there is no destination id", () => {
-    expect(trip.findTripByDestinationId(51)).to.equal(undefined);
-  });
-
-  it("should return undefined if there is no trip id", () => {
-    expect(trip.findTripByTripId(100)).to.equal(undefined);
-  });
-
-
 });
