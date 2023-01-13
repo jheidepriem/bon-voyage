@@ -1,11 +1,27 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './css/styles.css';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
+import './images/bon-voyage.jpg'
+import './images/bon-voyage7small.jpg'
 import './images/turing-logo.png'
+import Traveler from './Traveler';
+import Trip from './Trip'
+import Destinations from './Destinations';
+import { fetchAllData } from './apiCalls'
+import * as dayjs from "dayjs";
+
+let traveler
+let trip
+let destinations
+
+fetchAllData().then((data) => {
+  console.log(data)
+  traveler = data[0].travelerData;
+  trip = data[1].tripData;
+  destinations = data[2].destinationsData;
+  loadPageFunctions();
+});
 
 
 console.log('This is the JavaScript entry file - your code begins here.');
+
+
+

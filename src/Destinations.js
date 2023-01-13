@@ -1,15 +1,26 @@
 class Destinations {
-  constructor(destinationData) {
-    this.destinationData = destinationData
+  constructor(data) {
+    this.data = data
+}
+
+findDestinationById(id) {
+    return this.data.filter(destination => destination.id === id);
+  }
+
+findDestinationByDestination(destinName) {
+  return this.data.filter(destination => destination.destination === destinName)
   }
 
 
-returnDestination(id) {
-  return this.destinationData.find(destination =>  destination.id === id);
-  }
+findLodgingCost(lodgeCost) {
+  return this.data.filter(destination => destination.estimatedLodgingCostPerDay === lodgeCost)
+}
 
-
-
-
+findFlightCost(flightCost) {
+  return this.data.filter(destination => destination.estimatedFlightCostPerPerson === flightCost)
+}
 
 }
+
+
+module.exports = Destinations;
