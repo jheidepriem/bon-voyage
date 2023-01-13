@@ -145,7 +145,6 @@ it("should return users past trips", () => {
     it("should return traveler cost per year", () => {
       expect(traveler.calculateTotalTravelerCost(destinations, trips)).to.equal(46393)
     })
-    
   })
 
   
