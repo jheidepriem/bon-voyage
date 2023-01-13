@@ -1,9 +1,9 @@
 const dayjs = require("dayjs");
 class Traveler {
-  constructor(travelerData) {
-    this.userID = travelerData.userID;
+  constructor(travelerData, trips) {
+    this.id = travelerData.id;
     this.name = travelerData.name;
-    this.trips = travelerData.trips;
+    this.trips = trips.filter(trip => trip.userID === this.id)
   }
 
   returnUserGreeting() {
@@ -11,8 +11,8 @@ class Traveler {
   }
 
   viewPendingTrips() {
-    const past = this.trips.filter((trip) => trip.status === "pending");
-    return past;
+    const pending = this.trips.filter((trip) => trip.status === "pending");
+    return pending;
   }
 
   viewPastTrips() {
@@ -27,6 +27,19 @@ class Traveler {
       dayjs(trip.date).isAfter("2021/01/01")
     );
     return futureTrips;
+  }
+
+  calculateTotalTravelerCost(destinations, userTrip) {
+    let tripTotal = userTrip.reduce((sum, trip) => {
+      destinations.forEach(destination => {
+        if (destination.id === trip.destinationID && trip.status === "approved") {
+          sum += (destination.estimatedLodgingCostPerDay * trip.duration + 
+          destination.estimatedFlightCostPerPerson * trip.travelers) * 1.1
+        }
+      })
+      return sum
+    }, 0)
+    return tripTotal
   }
 }
 
