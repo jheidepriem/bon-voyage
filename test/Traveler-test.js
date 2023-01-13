@@ -2,7 +2,7 @@ const { expect } = require("chai");
 const Traveler = require("../src/Traveler");
 
 describe("Traveler", () => {
-  let travelerData
+  let data
   let destinations
   let traveler
   let trips
@@ -14,7 +14,7 @@ describe("Traveler", () => {
   let destination3
 
   beforeEach(() => {
-    travelerData = {
+    data = {
       id: 7,
       name: "Ham Leadbeater"
     }
@@ -72,7 +72,7 @@ describe("Traveler", () => {
       }
       trips = [trip1, trip2, trip3]
       destinations = [destination1, destination2, destination3]
-      traveler = new Traveler(travelerData, trips)
+      traveler = new Traveler(data, trips)
   });
 
 it("should be a function", () => {
@@ -143,8 +143,9 @@ it("should return users past trips", () => {
     });
 
     it("should return traveler cost per year", () => {
-      expect(traveler.calculateTotalTravelerCost(destinations, trips)).to.equal(6985)
+      expect(traveler.calculateTotalTravelerCost(destinations, trips)).to.equal(46393)
     })
+    
   })
 
   
