@@ -1,8 +1,8 @@
 const dayjs = require("dayjs");
 class Traveler {
-  constructor(travelerData, trips) {
-    this.id = travelerData.id;
-    this.name = travelerData.name;
+  constructor(data, trips) {
+    this.id = data.id;
+    this.name = data.name;
     this.trips = trips.filter(trip => trip.userID === this.id)
   }
 
@@ -32,14 +32,14 @@ class Traveler {
   calculateTotalTravelerCost(destinations, userTrip) {
     let tripTotal = userTrip.reduce((sum, trip) => {
       destinations.forEach(destination => {
-        if (destination.id === trip.destinationID && trip.status === "approved") {
+        if (destination.id === trip.destinationID) {
           sum += (destination.estimatedLodgingCostPerDay * trip.duration + 
           destination.estimatedFlightCostPerPerson * trip.travelers) * 1.1
         }
       })
       return sum
     }, 0)
-    return tripTotal
+    return Number(tripTotal.toFixed(0))
   }
 }
 
