@@ -28,15 +28,20 @@ const backButton = document.getElementById("backButton")
 let traveler
 let trip
 let destinations
-let trips = []
+let travelerData
+let destinationsData
 
 fetchAllData().then((data) => {
   console.log(data)
-  traveler = data[0].travelerData;
-  trip = data[1].tripData;
-  destinations = data[2].destinationsData;
-  loadPageFunctions();
+  travelerData = data[0].travelerData;
+  tripData = data[1].tripData;
+  destinationsData = data[2].destinationsData;
+  
 });
+
+const newTraveler = () => (traveler = new Traveler(travelerData, trips))
+const newTrip = () => (trip = new Trip(data))
+const newDestination = () => (destinations = new Destinations(data))
 
 //event listeners
 
@@ -45,25 +50,71 @@ fetchAllData().then((data) => {
 // backButton.addEventListener(click, goBack());
 
 const loadPageFunctions = () => {
-  showUserInfo()
-  addDestToDropDown()
+  addTravelerTripInfo()
+  addDestToDropDown(destinations.findDestinationByDestination())
+  newTraveler()
+  newTrip()
+  newDestination()
 }
 
-const addDestToDropDown = (destinationNames) => {
-  destinationNames.forEach((destination) => {
-    dropDownMenu.innerHTML += `<option value="${destination}">${destination}</option>`
+const addTravelerTripInfo = () => {
+  showUserName()
+  showTotalYearlyCost()
+  displayUsersPastTrips()
+  displayUsersUpComingTrips()
+  displayUsersPendingTrips()
+}
+
+const addDestToDropDown = (destinationsNames) => {
+  destinationsNames.forEach((destinations) => {
+    dropDownMenu.innerHTML += `<option value="${destinations.findDestinationByDestination}">${destinations.findDestinationByDestination}</option>`
   })
 }
 
-const showUserInfo = () => {
-  userNameInput.innerText = `${traveler.name}`;
+const showUserName = () => {
+  userGreeting.innerText = `Hello, ${traveler.name}!`;
 };
 
 const showTotalYearlyCost = () => {
+  yearlyExpenses.innerText = `${traveler.calculateTotalTravelerCost(destinations.data, trip.data)}`
+}
+
+const displayUsersPastTrips = () => {
+  pastTripSection.innerHTML = ''
+  const pastTrips = traveler.viewPastTrips()
+  pastTrips.forEach(trip => {
+  const destination = destination.findDestinationByDestination(trip.destinationID)
+  pastTripSection.innerHTML += ``
+  })
+ 
+}
+
+const displayUsersUpComingTrips = () => {
+  upcomingTripSection.innerHTML = ''
+}
+
+const displayUsersPendingTrips = () => {
+  pendingTripSection.innerHTML = ''
 
 }
 
-console.log('This is the JavaScript entry file - your code begins here.');
+const displayTripTotal = () => {
+  tripTotalSection.innerText = `${trip.calculateTripCost(destinations.data, trip.data)}`
+}
 
 
+const goBackToSearch = () => {
+  dateInput.value = '';
+  durationInput.value = '';
+  numTravelerInput.value = '';
+  dropDownMenu.value = '';
+}
 
+
+const show = (element) => {
+  element.classList.remove('hidden')
+}
+
+const hide = (element) =>  {
+  element.classList.add('hidden')
+}
