@@ -1,5 +1,3 @@
-const Traveler = require("./Traveler");
-
 class Trip {
   constructor(data) {
     this.data = data;
@@ -20,10 +18,6 @@ class Trip {
   retrieveTripDuration(duration) {
     return this.data.filter(trip => trip.duration === duration)
   }
-
-
-  
-
-
 }
+
 module.exports = Trip;
