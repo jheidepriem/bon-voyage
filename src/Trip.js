@@ -26,7 +26,7 @@ class Trip {
       });
       return sum;
     }, 0);
-    return tripTotal;
+    return Number(tripTotal.toFixed(0));
   }
 }
 
