@@ -3,7 +3,7 @@ class Traveler {
   constructor(data, trips) {
     this.id = data.id;
     this.name = data.name;
-    this.trips = trips.filter(trip => trip.userID === this.id)
+    this.trips = trips.filter((trip) => trip.userID === this.id);
   }
 
   returnUserGreeting() {
@@ -16,30 +16,31 @@ class Traveler {
   }
 
   viewPastTrips() {
-    const past = this.trips.filter((trip) =>
-      dayjs(trip.date).isBefore("2021/01/01")
-    );
-    return past;
+    return this.trips.filter((trip) => dayjs(trip.date).isBefore("2021/01/01"));
   }
 
   viewUpcomingTrips() {
-    const futureTrips = this.trips.filter((trip) =>
-      dayjs(trip.date).isAfter("2021/01/01")
+    const futureTrips = this.trips.filter(
+      (trip) =>
+        trip.status === "approved" && dayjs(trip.date).isAfter("2021/01/01")
     );
     return futureTrips;
   }
 
   calculateTotalTravelerCost(destinations, userTrip) {
     let tripTotal = userTrip.reduce((sum, trip) => {
-      destinations.forEach(destination => {
+      destinations.forEach((destination) => {
         if (destination.id === trip.destinationID) {
-          sum += (destination.estimatedLodgingCostPerDay * trip.duration + 
-          destination.estimatedFlightCostPerPerson * trip.travelers) * 1.1
+          sum +=
+            (trip.duration * destination.estimatedLodgingCostPerDay +
+              destination.estimatedFlightCostPerPerson) *
+            trip.travelers *
+            0.1;
         }
-      })
-      return sum
-    }, 0)
-    return Number(tripTotal.toFixed(0))
+      });
+      return sum;
+    }, 0);
+    return Number(tripTotal.toFixed(0));
   }
 }
 
