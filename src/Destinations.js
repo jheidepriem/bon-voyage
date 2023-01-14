@@ -1,26 +1,41 @@
 class Destinations {
   constructor(data) {
-    this.data = data
-}
-
-findDestinationById(id) {
-    return this.data.filter(destination => destination.id === id);
+    this.data = data;
   }
 
-findDestinationByDestination(destinName) {
-  return this.data.filter(destination => destination.destination === destinName)
+  findDestinationById(id) {
+    return this.data.filter((destination) => destination.id === id);
   }
 
+  findDestination() {
+    const result = this.data
+      .map((location) => {
+        return location.destination;
+      })
+      .sort((a, b) => {
+        return a.localeCompare(b);
+      });
+    return result;
+  }
 
-findLodgingCost(lodgeCost) {
-  return this.data.filter(destination => destination.estimatedLodgingCostPerDay === lodgeCost)
+  findIdByName(destinName) {
+    const destinID = this.data.find((destination) => {
+      return destination.destination === destinName;
+    });
+    return destinID.id;
+  }
+
+  findLodgingCost(lodgeCost) {
+    return this.data.filter(
+      (destination) => destination.estimatedLodgingCostPerDay === lodgeCost
+    );
+  }
+
+  findFlightCost(flightCost) {
+    return this.data.filter(
+      (destination) => destination.estimatedFlightCostPerPerson === flightCost
+    );
+  }
 }
-
-findFlightCost(flightCost) {
-  return this.data.filter(destination => destination.estimatedFlightCostPerPerson === flightCost)
-}
-
-}
-
 
 module.exports = Destinations;
