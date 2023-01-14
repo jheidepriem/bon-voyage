@@ -8,9 +8,19 @@ const fetchApiUrl = (path) => {
 const fetchAllData = () => {
   return Promise.all([
     fetchApiUrl("destinations"),
-    fetchApiUrl("traveler"),
+    fetchApiUrl("travelers"),
     fetchApiUrl("trips"),
   ]);
 };
 
-export default { fetchAllData };
+const addData = (object, property) => {
+  return fetch(`http://localhost:3001/api/v1/${property}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(object),
+  }).then((response) => response.json());
+};
+
+export { fetchAllData, addData };
