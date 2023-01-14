@@ -1,12 +1,11 @@
-import './css/styles.css';
-import './images/bon-voyage.jpg'
-import './images/bon-voyage7small.jpg'
-import './images/turing-logo.png'
-import Traveler from './Traveler';
-import Trip from './Trip'
-import Destinations from './Destinations';
-import { fetchAllData } from './apiCalls'
-import * as dayjs from "dayjs";
+import "./css/styles.css";
+import "./images/bon-voyage7.jpg";
+import "./images/bon-voyage7small.jpg";
+import Traveler from "./Traveler";
+import Trip from "./Trip";
+import Destinations from "./Destinations";
+import { fetchAllData, addData } from "./apiCalls";
+const dayjs = require("dayjs");
 
 const userNameInput = document.getElementById("userNameInput");
 const passwordInput = document.getElementById("passwordImput");
@@ -17,104 +16,172 @@ const userGreeting = document.getElementById("userGreetingHeader");
 const dateInput = document.getElementById("dateInput");
 const durationInput = document.getElementById("durationInput");
 const numTravelerInput = document.getElementById("numberOfTravelersInput");
-const dropDownMenu = document.getElementById("dropDownMenu");
+const dropDownMenu = document.getElementById("dropDownMenuDestinations");
 const submitButton = document.getElementById("submitButton");
 const tripTotalSection = document.getElementById("tripEstimate");
 const pastTripSection = document.getElementById("pastTrips");
 const pendingTripSection = document.getElementById("pendingTrips");
 const upcomingTripSection = document.getElementById("upcomingTrips");
-const backButton = document.getElementById("backButton")
+const backButton = document.getElementById("backButton");
 
-let traveler
-let trip
-let destinations
-let travelerData
-let destinationsData
+let destinationsData;
+let travelersData;
+let tripsData;
+let traveler;
+let trip;
+let destinations;
+let currentTraveler;
 
 fetchAllData().then((data) => {
-  console.log(data)
-  travelerData = data[0].travelerData;
-  tripData = data[1].tripData;
-  destinationsData = data[2].destinationsData;
-  
+  destinationsData = data[0].destinations;
+  travelersData = data[1].travelers;
+  tripsData = data[2].trips;
+  trip = new Trip(tripsData);
+  destinations = new Destinations(destinationsData);
+  currentTraveler = travelersData[33];
+  traveler = new Traveler(currentTraveler, tripsData);
+  loadPageFunctions();
 });
 
-const newTraveler = () => (traveler = new Traveler(travelerData, trips))
-const newTrip = () => (trip = new Trip(data))
-const newDestination = () => (destinations = new Destinations(data))
-
-//event listeners
-
-// loginButton.addEventListener(click, loginFunction());
-// submitButton.addEventListener(click, addTripToPending());
-// backButton.addEventListener(click, goBack());
-
 const loadPageFunctions = () => {
-  addTravelerTripInfo()
-  addDestToDropDown(destinations.findDestinationByDestination())
-  newTraveler()
-  newTrip()
-  newDestination()
-}
+  addTravelerTripInfo();
+  addDestToDropDown();
+};
 
 const addTravelerTripInfo = () => {
-  showUserName()
-  showTotalYearlyCost()
-  displayUsersPastTrips()
-  displayUsersUpComingTrips()
-  displayUsersPendingTrips()
-}
+  showUserName();
+  showTotalYearlyCost();
+  displayUpComingTrips();
+  displayPastTrips();
+  displayPendingTrips();
+};
 
-const addDestToDropDown = (destinationsNames) => {
-  destinationsNames.forEach((destinations) => {
-    dropDownMenu.innerHTML += `<option value="${destinations.findDestinationByDestination}">${destinations.findDestinationByDestination}</option>`
-  })
-}
+const addDestToDropDown = () => {
+  return destinationsData.forEach((destination) => {
+    dropDownMenu.innerHTML += `<option value="${destination.destination}">${destination.destination}</option>`;
+  });
+};
 
 const showUserName = () => {
   userGreeting.innerText = `Hello, ${traveler.name}!`;
 };
 
 const showTotalYearlyCost = () => {
-  yearlyExpenses.innerText = `${traveler.calculateTotalTravelerCost(destinations.data, trip.data)}`
-}
+  yearlyExpenses.innerText = `${traveler.calculateTotalTravelerCost(
+    destinationsData,
+    tripsData
+  )}`;
+};
 
-const displayUsersPastTrips = () => {
-  pastTripSection.innerHTML = ''
-  const pastTrips = traveler.viewPastTrips()
-  pastTrips.forEach(trip => {
-  const destination = destination.findDestinationByDestination(trip.destinationID)
-  pastTripSection.innerHTML += ``
-  })
- 
-}
+const displayUpComingTrips = () => {
+  upcomingTripSection.innerHTML = "";
+  const upcomingTrips = traveler.viewUpcomingTrips();
+  upcomingTrips.forEach((trip) => {
+    const destination = destinations.findDestinationById(trip.destinationID);
+    upcomingTripSection.innerHTML += `
+  <section class=''>
+    <section class="trip-info">
+      <h2 class="trip-destination name">${destination[0].destination}</h2>
+      <h2 class="trip-date">${trip.date}</h2>
+      <h2 class="trip-duration">${trip.duration} day stay</h2>
+      <h2 class="trip-status">${trip.status}</h2>
+    </section>
+    <img class="trip-image" src="${destination[0].image}" alt="${destination[0].alt}"/>
+  </section>`;
+  });
+};
 
-const displayUsersUpComingTrips = () => {
-  upcomingTripSection.innerHTML = ''
-}
+const displayPastTrips = () => {
+  pastTripSection.innerHTML = "";
+  const pastTrips = traveler.viewPastTrips();
+  pastTrips.forEach((trip) => {
+    const destination = destinations.findDestinationById(trip.destinationID);
+    pastTripSection.innerHTML += `
+  <section class=''>
+    <section class="trip-info">
+      <h2 class="trip-destination name">${destination[0].destination}</h2>
+      <h2 class="trip-date">${trip.date}</h2>
+      <h2 class="trip-duration">${trip.duration} day stay</h2>
+      <h2 class="trip-status">${trip.status}</h2>
+    </section>
+    <img class="trip-image" src="${destination[0].image}" alt="${destination[0].alt}"/>
+  </section>`;
+  });
+};
 
-const displayUsersPendingTrips = () => {
-  pendingTripSection.innerHTML = ''
+const displayPendingTrips = () => {
+  pendingTripSection.innerHTML = "";
+  const pendingTrips = traveler.viewPendingTrips();
+  pendingTrips.forEach((trip) => {
+    const destination = destinations.findDestinationById(trip.destinationID);
+    pendingTripSection.innerHTML += `
+  <section class=''>
+    <section class="trip-info">
+      <h2 class="trip-destination name">${destination[0].destination}</h2>
+      <h2 class="trip-date">${trip.date}</h2>
+      <h2 class="trip-duration">${trip.duration} day stay</h2>
+      <h2 class="trip-status">${trip.status}</h2>
+    </section>
+    <img class="trip-image" src="${destination[0].image}" alt="${destination[0].alt}"/>
+  </section>`;
+  });
+};
 
-}
+const addTripToPending = (e) => {
+  e.preventDefault();
+  if (
+    dateInput.value &&
+    durationInput.value &&
+    numTravelerInput.value &&
+    dropDownMenu.value
+  ) {
+    const postTrip = {
+      id: Number(tripsData.length + 1),
+      userID: Number(traveler.id),
+      destinationID: destinations.findIdByName(dropDownMenu.value),
+      travelers: Number(numTravelerInput.value),
+      date: dayjs(dateInput.value).format("YYYY/MM/DD"),
+      duration: Number(durationInput.value),
+      status: "pending",
+      suggestedActivities: [],
+    };
+    displayTripTotal();
+    addData(postTrip, "trips")
+      .then((data) => updateTrips(data), "data")
+      .catch((err) => displayError(err));
+  }
+};
+const updateTrips = (data) => {
+  fetchAllData();
+};
 
 const displayTripTotal = () => {
-  tripTotalSection.innerText = `${trip.calculateTripCost(destinations.data, trip.data)}`
-}
-
+  tripTotalSection.innerText = `${trip.calculateTripCost(
+    destinationsData,
+    tripsData
+  )}`;
+  goBackToSearch();
+};
 
 const goBackToSearch = () => {
-  dateInput.value = '';
-  durationInput.value = '';
-  numTravelerInput.value = '';
-  dropDownMenu.value = '';
-}
+  dateInput.value = "";
+  durationInput.value = "";
+  numTravelerInput.value = "";
+  dropDownMenu.value = "";
+};
 
+const displayError = (err) => {
+  totalTripSection.innerText = `UH OH! Something went wrong. Please try again. (${err})`;
+};
 
 const show = (element) => {
-  element.classList.remove('hidden')
-}
+  element.classList.remove("hidden");
+};
 
-const hide = (element) =>  {
-  element.classList.add('hidden')
-}
+const hide = (element) => {
+  element.classList.add("hidden");
+};
+
+// loginButton.addEventListener(click, loginFunction());
+submitButton.addEventListener("click", addTripToPending);
+// backButton.addEventListener(click, goBack());
