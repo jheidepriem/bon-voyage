@@ -38,7 +38,7 @@ fetchAllData().then((data) => {
   tripsData = data[2].trips;
   trip = new Trip(tripsData);
   destinations = new Destinations(destinationsData);
-  currentTraveler = travelersData[33];
+  currentTraveler = travelersData[32];
   traveler = new Traveler(currentTraveler, tripsData);
   loadPageFunctions();
 });
@@ -67,7 +67,8 @@ const showUserName = () => {
 };
 
 const showTotalYearlyCost = () => {
-  yearlyExpenses.innerText = `${traveler.calculateTotalTravelerCost(
+  yearlyExpenses.innerText = `You're total yearly spending is : 
+  $${traveler.calculateTotalTravelerCost(
     destinationsData,
     tripsData
   )}`;
@@ -79,14 +80,16 @@ const displayUpComingTrips = () => {
   upcomingTrips.forEach((trip) => {
     const destination = destinations.findDestinationById(trip.destinationID);
     upcomingTripSection.innerHTML += `
-  <section class=''>
+  <section class='trip-section'>
     <section class="trip-info">
-      <h2 class="trip-destination name">${destination[0].destination}</h2>
-      <h2 class="trip-date">${trip.date}</h2>
-      <h2 class="trip-duration">${trip.duration} day stay</h2>
-      <h2 class="trip-status">${trip.status}</h2>
+      <h3 class="trip-destination name">${destination[0].destination}</h3>
+      <h3 class="trip-date">${trip.date}</h3>
+      <h3 class="trip-duration">${trip.duration} day stay</h3>
+      <h3 class="trip-status">${trip.status}</h3>
     </section>
+    <section class="image-container">
     <img class="trip-image" src="${destination[0].image}" alt="${destination[0].alt}"/>
+    </section>
   </section>`;
   });
 };
@@ -97,14 +100,16 @@ const displayPastTrips = () => {
   pastTrips.forEach((trip) => {
     const destination = destinations.findDestinationById(trip.destinationID);
     pastTripSection.innerHTML += `
-  <section class=''>
+  <section class='trip-section'>
     <section class="trip-info">
-      <h2 class="trip-destination name">${destination[0].destination}</h2>
-      <h2 class="trip-date">${trip.date}</h2>
-      <h2 class="trip-duration">${trip.duration} day stay</h2>
-      <h2 class="trip-status">${trip.status}</h2>
+      <h3 class="trip-destination name">${destination[0].destination}</h3>
+      <h3 class="trip-date">${trip.date}</h3>
+      <h3 class="trip-duration">${trip.duration} day stay</h3>
+      <h3 class="trip-status">${trip.status}</h3>
     </section>
+    <section class="image-container">
     <img class="trip-image" src="${destination[0].image}" alt="${destination[0].alt}"/>
+    </section>
   </section>`;
   });
 };
@@ -115,12 +120,12 @@ const displayPendingTrips = () => {
   pendingTrips.forEach((trip) => {
     const destination = destinations.findDestinationById(trip.destinationID);
     pendingTripSection.innerHTML += `
-  <section class=''>
+  <section class='trip-section'>
     <section class="trip-info">
-      <h2 class="trip-destination name">${destination[0].destination}</h2>
-      <h2 class="trip-date">${trip.date}</h2>
-      <h2 class="trip-duration">${trip.duration} day stay</h2>
-      <h2 class="trip-status">${trip.status}</h2>
+      <h3 class="trip-destination name">${destination[0].destination}</h3>
+      <h3 class="trip-date">${trip.date}</h3>
+      <h3 class="trip-duration">${trip.duration} day stay</h3>
+      <h3 class="trip-status">${trip.status}</h3>
     </section>
     <img class="trip-image" src="${destination[0].image}" alt="${destination[0].alt}"/>
   </section>`;
@@ -145,7 +150,7 @@ const addTripToPending = (e) => {
       status: "pending",
       suggestedActivities: [],
     };
-    displayTripTotal();
+    displayTripTotal(); goBackToSearch();
     addData(postTrip, "trips")
       .then((data) => updateTrips(data), "data")
       .catch((err) => displayError(err));
@@ -156,11 +161,8 @@ const updateTrips = (data) => {
 };
 
 const displayTripTotal = () => {
-  tripTotalSection.innerText = `${trip.calculateTripCost(
-    destinationsData,
-    tripsData
-  )}`;
-  goBackToSearch();
+  return tripTotalSection.innerText = `Your trip estimate is ${trip.calculateTripCost(destinationsData, tripsData)} 
+  + a 10% travel agent booking fee`;
 };
 
 const goBackToSearch = () => {
