@@ -21,7 +21,8 @@ class Trip {
         if (destination.id === trip.destinationID) {
           sum +=
             (destination.estimatedLodgingCostPerDay * trip.duration +
-            destination.estimatedFlightCostPerPerson * trip.travelers) * 1.1 
+              destination.estimatedFlightCostPerPerson * trip.travelers) *
+            1.1;
         }
       });
       return sum;
