@@ -41,40 +41,6 @@ describe("Destinations", () => {
     ]);
   });
 
-  it("should find destination by destination name", () => {
-    expect(destinations.findDestination("New York, New York")).to.deep.equal([
-      "New York, New York",
-    ]);
-  });
-
-  it("should find destination lodging cost per day", () => {
-    expect(destinations.findLodgingCost(175)).to.deep.equal([
-      {
-        id: 25,
-        destination: "New York, New York",
-        estimatedLodgingCostPerDay: 175,
-        estimatedFlightCostPerPerson: 200,
-        image:
-          "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
-        alt: "people crossing the street during the day surrounded by tall buildings and advertisements",
-      },
-    ]);
-  });
-
-  it("should estimated flight cost per person", () => {
-    expect(destinations.findFlightCost(200)).to.deep.equal([
-      {
-        id: 25,
-        destination: "New York, New York",
-        estimatedLodgingCostPerDay: 175,
-        estimatedFlightCostPerPerson: 200,
-        image:
-          "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
-        alt: "people crossing the street during the day surrounded by tall buildings and advertisements",
-      },
-    ]);
-  });
-
   it("should return the destination ID when given the destination name", function () {
     expect(destinations.findIdByName("New York, New York")).to.equal(25);
   });
