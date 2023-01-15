@@ -144,7 +144,7 @@ describe("Traveler", () => {
 
   it("should return traveler cost per year", () => {
     expect(traveler.calculateTotalTravelerCost(destinations, trips)).to.equal(
-      40568
+      "40,568"
     );
   });
 });

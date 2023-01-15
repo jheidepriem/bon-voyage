@@ -86,6 +86,6 @@ describe("Trip", () => {
   });
 
   it("should calculate trip cost", () => {
-    expect(trip.calculateTripCost(destinations, trips)).to.equal(2200);
+    expect(trip.calculateTripCost(destinations, trips)).to.equal(2420);
   });
 });
