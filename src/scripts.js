@@ -7,22 +7,24 @@ import Destinations from "./Destinations";
 import { fetchAllData, addData } from "./apiCalls";
 const dayjs = require("dayjs");
 
-const userNameInput = document.getElementById("userNameInput");
-const passwordInput = document.getElementById("passwordImput");
-const loginMessage = document.getElementById("loginMessage");
-const loginButton = document.getElementById("loginButton");
-const yearlyExpenses = document.getElementById("yearlyExpenses");
-const userGreeting = document.getElementById("userGreetingHeader");
+const bookButton = document.getElementById("bookbutton");
 const dateInput = document.getElementById("dateInput");
-const durationInput = document.getElementById("durationInput");
-const numTravelerInput = document.getElementById("numberOfTravelersInput");
 const dropDownMenu = document.getElementById("dropDownMenuDestinations");
+const loginPage = document.getElementById("loginPage");
+const durationInput = document.getElementById("durationInput");
+const loginButton = document.getElementById("banana");
+const loginMessage = document.getElementById("loginMessage");
+const numTravelerInput = document.getElementById("numberOfTravelersInput");
+const mainDashboard = document.getElementById("mainDashboard");
+const pastTripSection = document.getElementById("pastTrips");
+const passwordInput = document.getElementById("passwordInput");
+const pendingTripSection = document.getElementById("pendingTrips");
 const submitButton = document.getElementById("submitButton");
 const tripTotalSection = document.getElementById("tripEstimate");
-const pastTripSection = document.getElementById("pastTrips");
-const pendingTripSection = document.getElementById("pendingTrips");
 const upcomingTripSection = document.getElementById("upcomingTrips");
-const backButton = document.getElementById("backButton");
+const userGreeting = document.getElementById("userGreetingHeader");
+const userNameInput = document.getElementById("userNameInput");
+const yearlyExpenses = document.getElementById("yearlyExpenses");
 
 let destinationsData;
 let travelersData;
@@ -32,16 +34,18 @@ let trip;
 let destinations;
 let currentTraveler;
 
-fetchAllData().then((data) => {
+const getUser = (id) => {
+  fetchAllData(id).then((data) => {
   destinationsData = data[0].destinations;
-  travelersData = data[1].travelers;
+  travelersData = data[1];
   tripsData = data[2].trips;
   trip = new Trip(tripsData);
   destinations = new Destinations(destinationsData);
-  currentTraveler = travelersData[32];
+  currentTraveler = travelersData;
   traveler = new Traveler(currentTraveler, tripsData);
   loadPageFunctions();
-});
+})
+};
 
 const loadPageFunctions = () => {
   addTravelerTripInfo();
@@ -67,10 +71,9 @@ const showUserName = () => {
 };
 
 const showTotalYearlyCost = () => {
-  yearlyExpenses.innerText = `You're total yearly spending is : 
-  $${traveler.calculateTotalTravelerCost(
+  yearlyExpenses.innerText = `Your total yearly travel expenses are : $${traveler.calculateTotalTravelerCost(
     destinationsData,
-    tripsData
+    traveler.trips
   )}`;
 };
 
@@ -80,17 +83,17 @@ const displayUpComingTrips = () => {
   upcomingTrips.forEach((trip) => {
     const destination = destinations.findDestinationById(trip.destinationID);
     upcomingTripSection.innerHTML += `
-  <section class='trip-section'>
-    <section class="trip-info">
+      <section class='trip-section'>
+      <section class="trip-info">
       <h3 class="trip-destination name">${destination[0].destination}</h3>
       <h3 class="trip-date">${trip.date}</h3>
       <h3 class="trip-duration">${trip.duration} day stay</h3>
       <h3 class="trip-status">${trip.status}</h3>
-    </section>
-    <section class="image-container">
-    <img class="trip-image" src="${destination[0].image}" alt="${destination[0].alt}"/>
-    </section>
-  </section>`;
+      </section>
+      <section class="image-container">
+      <img class="trip-image" src="${destination[0].image}" alt="${destination[0].alt}"/>
+      </section>
+      </section>`;
   });
 };
 
@@ -100,17 +103,17 @@ const displayPastTrips = () => {
   pastTrips.forEach((trip) => {
     const destination = destinations.findDestinationById(trip.destinationID);
     pastTripSection.innerHTML += `
-  <section class='trip-section'>
-    <section class="trip-info">
+      <section class='trip-section'>
+      <section class="trip-info">
       <h3 class="trip-destination name">${destination[0].destination}</h3>
       <h3 class="trip-date">${trip.date}</h3>
       <h3 class="trip-duration">${trip.duration} day stay</h3>
       <h3 class="trip-status">${trip.status}</h3>
-    </section>
-    <section class="image-container">
-    <img class="trip-image" src="${destination[0].image}" alt="${destination[0].alt}"/>
-    </section>
-  </section>`;
+      </section>
+      <section class="image-container">
+      <img class="trip-image" src="${destination[0].image}" alt="${destination[0].alt}"/>
+      </section>
+      </section>`;
   });
 };
 
@@ -120,16 +123,27 @@ const displayPendingTrips = () => {
   pendingTrips.forEach((trip) => {
     const destination = destinations.findDestinationById(trip.destinationID);
     pendingTripSection.innerHTML += `
-  <section class='trip-section'>
-    <section class="trip-info">
+      <section class='trip-section'>
+      <section class="trip-info">
       <h3 class="trip-destination name">${destination[0].destination}</h3>
       <h3 class="trip-date">${trip.date}</h3>
       <h3 class="trip-duration">${trip.duration} day stay</h3>
       <h3 class="trip-status">${trip.status}</h3>
-    </section>
-    <img class="trip-image" src="${destination[0].image}" alt="${destination[0].alt}"/>
-  </section>`;
+      </section>
+      <img class="trip-image" src="${destination[0].image}" alt="${destination[0].alt}"/>
+      </section>`;
   });
+};
+
+const goBackToSearch = () => {
+  dateInput.value = "";
+  durationInput.value = "";
+  numTravelerInput.value = "";
+  dropDownMenu.value = "";
+};
+
+const displayError = (err) => {
+  tripTotalSection.innerText = `UH OH! Something went wrong. Please try again. (${err})`;
 };
 
 const addTripToPending = (e) => {
@@ -150,31 +164,78 @@ const addTripToPending = (e) => {
       status: "pending",
       suggestedActivities: [],
     };
-    displayTripTotal(); goBackToSearch();
+    hide(tripTotalSection)
+    goBackToSearch();
+    show(submitButton);
+    hide(bookButton);
     addData(postTrip, "trips")
-      .then((data) => updateTrips(data), "data")
+      .then((data) => console.log(data))
+      .then(() => updateTrips(traveler.id))
       .catch((err) => displayError(err));
   }
 };
-const updateTrips = (data) => {
-  fetchAllData();
+
+const updateTrips = (id) => {
+  fetchAllData(id).then((data) => {
+    destinationsData = data[0].destinations;
+    travelersData = data[1];
+    tripsData = data[2].trips;
+    trip = new Trip(tripsData);
+    destinations = new Destinations(destinationsData);
+    currentTraveler = travelersData;
+    traveler = new Traveler(currentTraveler, tripsData);
+    loadPageFunctions();
+  });
 };
 
 const displayTripTotal = () => {
-  return tripTotalSection.innerText = `Your trip estimate is ${trip.calculateTripCost(destinationsData, tripsData)} 
-  + a 10% travel agent booking fee`;
+  const tripObj = [
+    {
+      id: tripsData.length + 1,
+      userID: traveler.id,
+      destinationID: destinations.findIdByName(dropDownMenu.value),
+      travelers: numTravelerInput.value,
+      date: dayjs(dateInput.value).format("YYYY/MM/DD"),
+      duration: Number(durationInput.value),
+      status: null,
+      suggestedActivities: [],
+    },
+  ];
+  if (
+    dateInput.value &&
+    durationInput.value &&
+    numTravelerInput.value &&
+    dropDownMenu.value
+  )
+    tripTotalSection.innerText = `Your trip estimate is $${trip.calculateTripCost(
+      destinationsData,
+      tripObj
+    )} 
+            (includes a 10% travel agent booking fee)`;
+  hide(submitButton);
+  show(bookButton);
 };
 
-const goBackToSearch = () => {
-  dateInput.value = "";
-  durationInput.value = "";
-  numTravelerInput.value = "";
-  dropDownMenu.value = "";
+const getUserLogIn = (userNameInput, passwordInput) => {
+ console.log("hello")
+  const findUserNameId = userNameInput.value.split("traveler");
+  const id = Number(findUserNameId[1]);
+  console.log(findUserNameId)
+  if (
+    id >= 1 &&
+    id <= 50 &&
+    userNameInput.value === `traveler${id}` &&
+    passwordInput.value === "travel"
+  ) {
+    show(mainDashboard)
+    hide(loginPage)
+    return getUser(id);
+  } else {
+    //innerhtml for error handling 
+  }
 };
 
-const displayError = (err) => {
-  totalTripSection.innerText = `UH OH! Something went wrong. Please try again. (${err})`;
-};
+
 
 const show = (element) => {
   element.classList.remove("hidden");
@@ -184,6 +245,6 @@ const hide = (element) => {
   element.classList.add("hidden");
 };
 
-// loginButton.addEventListener(click, loginFunction());
-submitButton.addEventListener("click", addTripToPending);
-// backButton.addEventListener(click, goBack());
+loginButton.addEventListener("click", () => {getUserLogIn(userNameInput, passwordInput)});
+submitButton.addEventListener("click", displayTripTotal);
+bookButton.addEventListener("click", addTripToPending);
