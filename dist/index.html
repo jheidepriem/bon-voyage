@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../src/css/styles.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito+Sans:wght@200;300&family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300"
+  rel="stylesheet" rel="stylesheet">
   <title>Travel Tracker</title>
 </head>
   <body>
@@ -23,18 +23,17 @@
         <button class="login-button" id="loginButton">Sign In</button>
       </section>
     </section>
-    <section class="main-dashboard" id='mainDashboard'>
+    <section class="main-dashboard " id='mainDashboard'>
       <section class="travel-tracker-logo">
         <img class="app-logo" src="./images/bon-voyage7small.jpg" alt="Palm trees, beach, and sun logo"/>
         <h1 class="application-title">BON VOYAGE</h1>
       </section>
-      <section class="yearly-expenses">
-        <h2 class="total-spent"></h2>
-        <h2 class="price" id="yearlyExpenses"></h2>
-      </section>
     </section>
         <section class="user-greeting" id="userGreeting">
           <h1 class="user-greeting-header" id="userGreetingHeader" placeholder="hello-message">Hello, Josephine!</h1>
+          <section class="yearly-expenses">
+            <h2 class="total-spent" id="yearlyExpenses"></h2>
+          </section>
         </section>
         <section class="search-destinations-section">
           <form class="new-trip-inputs">
@@ -47,6 +46,9 @@
           </form>
           <section class="submit-button-section">
             <button class="submit-button" id="submitButton">Let's Go!</button>
+          </section>
+          <section class="book-button-section ">
+            <button class="book-button hidden" id="bookbutton">Book it!</button>
           </section>
         </section>
         <section class="trip-cost-total">
