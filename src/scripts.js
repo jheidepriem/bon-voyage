@@ -36,15 +36,15 @@ let currentTraveler;
 
 const getUser = (id) => {
   fetchAllData(id).then((data) => {
-  destinationsData = data[0].destinations;
-  travelersData = data[1];
-  tripsData = data[2].trips;
-  trip = new Trip(tripsData);
-  destinations = new Destinations(destinationsData);
-  currentTraveler = travelersData;
-  traveler = new Traveler(currentTraveler, tripsData);
-  loadPageFunctions();
-})
+    destinationsData = data[0].destinations;
+    travelersData = data[1];
+    tripsData = data[2].trips;
+    trip = new Trip(tripsData);
+    destinations = new Destinations(destinationsData);
+    currentTraveler = travelersData;
+    traveler = new Traveler(currentTraveler, tripsData);
+    loadPageFunctions();
+  });
 };
 
 const loadPageFunctions = () => {
@@ -164,28 +164,15 @@ const addTripToPending = (e) => {
       status: "pending",
       suggestedActivities: [],
     };
-    hide(tripTotalSection)
+    hide(tripTotalSection);
     goBackToSearch();
     show(submitButton);
     hide(bookButton);
     addData(postTrip, "trips")
       .then((data) => console.log(data))
-      .then(() => updateTrips(traveler.id))
+      .then(() => getUser(traveler.id))
       .catch((err) => displayError(err));
   }
-};
-
-const updateTrips = (id) => {
-  fetchAllData(id).then((data) => {
-    destinationsData = data[0].destinations;
-    travelersData = data[1];
-    tripsData = data[2].trips;
-    trip = new Trip(tripsData);
-    destinations = new Destinations(destinationsData);
-    currentTraveler = travelersData;
-    traveler = new Traveler(currentTraveler, tripsData);
-    loadPageFunctions();
-  });
 };
 
 const displayTripTotal = () => {
@@ -217,25 +204,22 @@ const displayTripTotal = () => {
 };
 
 const getUserLogIn = (userNameInput, passwordInput) => {
- console.log("hello")
   const findUserNameId = userNameInput.value.split("traveler");
   const id = Number(findUserNameId[1]);
-  console.log(findUserNameId)
+  console.log(findUserNameId);
   if (
     id >= 1 &&
     id <= 50 &&
     userNameInput.value === `traveler${id}` &&
     passwordInput.value === "travel"
   ) {
-    show(mainDashboard)
-    hide(loginPage)
+    show(mainDashboard);
+    hide(loginPage);
     return getUser(id);
   } else {
-    //innerhtml for error handling 
+    loginMessage.innerText = "Invalid login. Please try again.";
   }
 };
-
-
 
 const show = (element) => {
   element.classList.remove("hidden");
@@ -245,6 +229,8 @@ const hide = (element) => {
   element.classList.add("hidden");
 };
 
-loginButton.addEventListener("click", () => {getUserLogIn(userNameInput, passwordInput)});
+loginButton.addEventListener("click", () => {
+  getUserLogIn(userNameInput, passwordInput);
+});
 submitButton.addEventListener("click", displayTripTotal);
 bookButton.addEventListener("click", addTripToPending);
