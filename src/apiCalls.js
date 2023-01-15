@@ -5,10 +5,10 @@ const fetchApiUrl = (path) => {
     .catch((error) => console.log(`${path} error`));
 };
 
-const fetchAllData = () => {
+const fetchAllData = (id) => {
   return Promise.all([
     fetchApiUrl("destinations"),
-    fetchApiUrl("travelers"),
+    fetchApiUrl(`travelers/${id}`),
     fetchApiUrl("trips"),
   ]);
 };
