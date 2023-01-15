@@ -40,7 +40,7 @@ class Traveler {
       });
       return sum;
     }, 0);
-    return Number(tripTotal.toFixed(0));
+    return Number(tripTotal.toFixed(0)).toLocaleString();
   }
 }
 
