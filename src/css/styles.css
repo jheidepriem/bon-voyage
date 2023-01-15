@@ -1,6 +1,7 @@
 body {
   background-color: #e3d5ca;
-  background-image: "../src/paris.jpg";
+  /* background-image: url(../images/paris.jpg);
+  opacity: .5; */
   display: flex;
   flex-direction: column;
   font-family: "Lora", serif;
@@ -40,7 +41,6 @@ input {
   justify-content: center;
   padding-bottom: 4%;
   padding-top: 6%;
-  
 }
 
 .login-center {
@@ -87,7 +87,6 @@ input {
   display: flex;
   text-align: center;
 }
-
 
 .search-destinations-section {
   align-items: center;
@@ -159,6 +158,7 @@ input {
 .trip-total {
   display: flex;
   justify-content: center;
+  text-align: center;
 }
 
 .trip-details {
