@@ -28,8 +28,8 @@ class Traveler {
   }
 
   calculateTotalTravelerCost(destinations, userTrip) {
-    if (!destinations || !userTrip)return "No destinations or trip found!"
-    if (destinations.id !== userTrip.destinationID) return "No ID found!"
+    if (!destinations || !userTrip) return "No destinations or trip found!";
+    if (destinations.id !== userTrip.destinationID) return "No ID found!";
     let tripTotal = userTrip.reduce((sum, trip) => {
       destinations.forEach((destination) => {
         if (destination.id === trip.destinationID) {
