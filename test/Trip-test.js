@@ -46,4 +46,12 @@ describe("Trip", () => {
   it("should calculate trip cost", () => {
     expect(trip.calculateTripCost(destinations, trips)).to.equal(2420);
   });
+
+  it("should return undefined if no destinatonID is found", () => {
+    expect(trip.calculateTripCost()).to.equal(undefined);
+  });
+
+  it("should return undefined if no user trip is found", () => {
+    expect(trip.calculateTripCost()).to.equal(undefined);
+  });
 });
