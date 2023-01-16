@@ -1,6 +1,7 @@
 import "./css/styles.css";
 import "./images/bon-voyage7.jpg";
 import "./images/bon-voyage7small.jpg";
+import "./images/bon-voyagelogo.png";
 import Traveler from "./Traveler";
 import Trip from "./Trip";
 import Destinations from "./Destinations";
