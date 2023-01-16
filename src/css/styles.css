@@ -17,7 +17,7 @@ h2 {
 }
 
 h3 {
-  font-size: 10px;
+  font-size: 13px;
   margin: 4px;
 }
 
@@ -145,7 +145,7 @@ input {
   display: flex;
   flex-direction: column;
   height: 70vh;
-  justify-content: center;
+  justify-content: flex-start;
   margin: 1.5%;
   overflow: scroll;
   width: 33vw;
