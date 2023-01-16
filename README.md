@@ -13,6 +13,8 @@ That's right, _clone_ not fork. You will use this repo multiple times, but you c
 Now try to commit something (just add a line in the README) and push it up to your new repo. If everything is setup correctly, you should see the changes on GitHub.
 
 ## Setup
+![loginPage](https://user-images.githubusercontent.com/108428451/212730789-991417b6-2d8d-4539-973c-a48e37db16e7.gif)
+![bookTrip](https://user-images.githubusercontent.com/108428451/212730823-5aa5a06f-915b-4992-b119-88bc06b97fc5.gif)
 
 After one person has gone through the steps of cloning down this repo and editing the remote, everyone should clone down the repo.
 
