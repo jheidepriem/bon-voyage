@@ -48,10 +48,10 @@ describe("Trip", () => {
   });
 
   it("should return undefined if no destinatonID is found", () => {
-    expect(trip.calculateTripCost()).to.equal(undefined);
+    expect(trip.calculateTripCost()).to.equal('No destinations or trip found!');
   });
 
   it("should return undefined if no user trip is found", () => {
-    expect(trip.calculateTripCost()).to.equal(undefined);
+    expect(trip.calculateTripCost()).to.equal("No destinations or trip found!");
   });
 });

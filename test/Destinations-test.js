@@ -46,10 +46,10 @@ describe("Destinations", () => {
   });
 
   it("should return undefined if no destinationID is found", () => {
-    expect(destinations.findDestinationById()).to.equal(undefined);
+    expect(destinations.findDestinationById()).to.equal("Sorry, no id found!");
   });
 
   it("should return undefined if no name is found by id", () => {
-    expect(destinations.findIdByName()).to.equal(undefined);
+    expect(destinations.findIdByName()).to.equal("No destination name found!");
   });
 });
