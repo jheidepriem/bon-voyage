@@ -34,9 +34,8 @@ class Traveler {
       destinations.forEach((destination) => {
         if (destination.id === trip.destinationID) {
           sum +=
-            (trip.duration * destination.estimatedLodgingCostPerDay +
-              destination.estimatedFlightCostPerPerson) *
-            trip.travelers *
+            ((trip.duration * destination.estimatedLodgingCostPerDay +
+              destination.estimatedFlightCostPerPerson) *trip.travelers) *
             0.1;
         }
       });
