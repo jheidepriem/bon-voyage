@@ -107,7 +107,7 @@ input {
 
 .trip-header {
   text-align: center;
-  text-shadow: dimgrey;
+  color: #888d8d;
   font-weight: 700;
 }
 
@@ -143,7 +143,7 @@ input {
   border-radius: 5px;
   box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3);
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   height: 70vh;
   justify-content: flex-start;
   margin: 1.5%;
@@ -195,7 +195,7 @@ input {
 }
 
 .trip-image {
-  height: 150px;
+  height: 140px;
   width: 188px;
 }
 
