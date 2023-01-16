@@ -62,9 +62,9 @@ const addTravelerTripInfo = () => {
 };
 
 const addDestToDropDown = () => {
-  return destinationsData.forEach((destination) => {
+  return destinationsData.sort((a,b) => a.destination.localeCompare(b.destination)).forEach((destination) => {
     dropDownMenu.innerHTML += `<option value="${destination.destination}">${destination.destination}</option>`;
-  });
+  })
 };
 
 const showUserName = () => {
@@ -200,6 +200,7 @@ const displayTripTotal = () => {
       tripObj
     )} 
             (includes a 10% travel agent booking fee)`;
+  show(tripTotalSection);
   hide(submitButton);
   show(bookButton);
 };
