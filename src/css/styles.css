@@ -15,7 +15,7 @@ h1 {
 }
 
 h2 {
-  font-size: 16px;
+  font-size: 20px;
 }
 
 h3 {
@@ -25,6 +25,7 @@ h3 {
 
 .main-dashboard {
   padding-top: 15px;
+  background-image: url(../images/italy.jpg);
 }
 
 .destination-drop-down,
@@ -77,6 +78,10 @@ input {
   width: max-content;
 }
 
+.nav-bar {
+  padding-bottom: 32px;
+}
+
 .app-logo {
   height: 12vh;
   width: 9vw;
@@ -115,7 +120,7 @@ input {
 }
 
 .all-trips-container {
-  background-color: rgb(249, 249, 249);
+  background-color: #f0f0f0;
   border: 3px;
   display: flex;
   height: 70vh;
@@ -132,7 +137,7 @@ input {
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  height: 97vh;
+  height: 70vh;
   justify-content: center;
   margin: 1.5%;
   overflow: scroll;
@@ -140,12 +145,16 @@ input {
 }
 
 .yearly-expenses {
+  background-color:  #f0f0f0;
   display: flex;
   justify-content: center;
 }
 
 .user-greeting-header {
+
   display: flex;
+  background-color: #f0f0f0;
+  flex-direction: row-reverse;
   justify-content: center;
 }
 
@@ -156,6 +165,7 @@ input {
 }
 
 .trip-total {
+  background-color: white;
   display: flex;
   justify-content: center;
   text-align: center;
@@ -183,7 +193,7 @@ input {
 
 .trip-section {
   align-items: center;
-  background-color: #f9f0ea;
+  background-color:#f0f0f0;
   border-radius: 5px;
   display: flex;
   justify-content: space-evenly;
