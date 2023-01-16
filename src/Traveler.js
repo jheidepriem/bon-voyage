@@ -28,13 +28,14 @@ class Traveler {
   }
 
   calculateTotalTravelerCost(destinations, userTrip) {
+    if (!destinations || !userTrip) return "No destinations or trip found!";
+    if (destinations.id !== userTrip.destinationID) return "No ID found!";
     let tripTotal = userTrip.reduce((sum, trip) => {
       destinations.forEach((destination) => {
         if (destination.id === trip.destinationID) {
           sum +=
-            (trip.duration * destination.estimatedLodgingCostPerDay +
-              destination.estimatedFlightCostPerPerson) *
-            trip.travelers *
+            ((trip.duration * destination.estimatedLodgingCostPerDay +
+              destination.estimatedFlightCostPerPerson) *trip.travelers) *
             0.1;
         }
       });

@@ -44,4 +44,12 @@ describe("Destinations", () => {
   it("should return the destination ID when given the destination name", function () {
     expect(destinations.findIdByName("New York, New York")).to.equal(25);
   });
+
+  it("should return undefined if no destinationID is found", () => {
+    expect(destinations.findDestinationById()).to.equal("Sorry, no id found!");
+  });
+
+  it("should return undefined if no name is found by id", () => {
+    expect(destinations.findIdByName()).to.equal("No destination name found!");
+  });
 });

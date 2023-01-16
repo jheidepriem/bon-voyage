@@ -147,4 +147,16 @@ describe("Traveler", () => {
       "40,568"
     );
   });
+
+  it("should return undefined if no destinatonID is found", () => {
+    expect(traveler.calculateTotalTravelerCost()).to.equal(
+      "No destinations or trip found!"
+    );
+  });
+
+  it("should return undefined if no user trip is found", () => {
+    expect(traveler.calculateTotalTravelerCost()).to.equal(
+      "No destinations or trip found!"
+    );
+  });
 });

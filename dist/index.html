@@ -1,54 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300"
-  rel="stylesheet" rel="stylesheet">
-  <title>Travel Tracker</title>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300"
+      rel="stylesheet"
+      rel="stylesheet"
+    />
+    <title>Travel Tracker</title>
+  </head>
   <body>
     <main>
-      <section class="login-page " id=loginPage>
+      <section class="login-page" id="loginPage">
         <section class="login-image">
-            <img class="application-logo" src="../images/bon-voyage7.jpg" alt="palm tree icon" />
-          </section>
-      <section class="login-center">
-        <h1>SIGN IN</h1>
-        <h2>The Only Trip You'll Regret, is the One You Don't Take</h2>
-        <input class="user-name-input" id="userNameInput" type="text" placeholder="username" required />
-        <input class="password-input" id="passwordInput" type="password" placeholder="password" required />
-        <h2 class="login-message" id="loginMessage"></h2>
-        <button class="login-button" id="banana">Sign In</button>
-      </section>
-      </section>
-      <section class="main-dashboard hidden" id='mainDashboard'>
-        <section class="nav-bar" id="navBar">
-        <section class="travel-tracker-logo">
-          <img class="app-logo" src="./images/bon-voyagelogo.png" alt="Palm trees, beach, and sun logo"/>
-          <h1 class="application-title">BON VOYAGE</h1>
+          <img
+            class="application-logo"
+            src="../images/bon-voyage7.jpg"
+            alt="palm tree icon"
+          />
+        </section>
+        <section class="login-center">
+          <h1>SIGN IN</h1>
+          <h2>The Only Trip You'll Regret, is the One You Don't Take</h2>
+          <input
+            class="user-name-input"
+            id="userNameInput"
+            type="text"
+            placeholder="username"
+            required
+          />
+          <input
+            class="password-input"
+            id="passwordInput"
+            type="password"
+            placeholder="password"
+            required
+          />
+          <h2 class="login-message" id="loginMessage"></h2>
+          <button class="login-button" id="banana">Sign In</button>
         </section>
       </section>
-      <section class="user-greeting" id="userGreeting">
-          <h1 class="user-greeting-header" id="userGreetingHeader" placeholder="hello-message">Hello, Josephine!</h1>
+      <section class="main-dashboard hidden" id="mainDashboard">
+        <section class="nav-bar" id="navBar">
+          <section class="travel-tracker-logo">
+            <img
+              class="app-logo"
+              src="./images/bon-voyagelogo.png"
+              alt="Palm trees, beach, and sun logo"
+            />
+            <h1 class="application-title">BON VOYAGE</h1>
+          </section>
+        </section>
+        <section class="user-greeting" id="userGreeting">
+          <h1
+            class="user-greeting-header"
+            id="userGreetingHeader"
+            placeholder="hello-message"
+          >
+            Hello, Josephine!
+          </h1>
           <section class="yearly-expenses">
             <h2 class="total-spent" id="yearlyExpenses"></h2>
           </section>
         </section>
         <section class="search-destinations-section">
           <form class="new-trip-inputs">
-            <input class="date-input" id="dateInput" type="date" value="yyyy-MM-dd" min ="2021-12-02" placeholder="date" required />
-            <input class="duration-input" id="durationInput" type="number" min="1" placeholder="duration" required />
-            <input class="number-travelers-input" id="numberOfTravelersInput" type="number" min="1" placeholder="# of travelers" required />
-            <select class="destination-drop-down" name="dropDown" id="dropDownMenuDestinations" required>
+            <input
+              class="date-input"
+              id="dateInput"
+              type="date"
+              value="yyyy-MM-dd"
+              min="2021-12-02"
+              placeholder="date"
+              required
+            />
+            <input
+              class="duration-input"
+              id="durationInput"
+              type="number"
+              min="1"
+              placeholder="duration"
+              required
+            />
+            <input
+              class="number-travelers-input"
+              id="numberOfTravelersInput"
+              type="number"
+              min="1"
+              placeholder="# of travelers"
+              required
+            />
+            <select
+              class="destination-drop-down"
+              name="dropDown"
+              id="dropDownMenuDestinations"
+              required
+            >
               <option value="" disabled selected hidden>Destinations</option>
             </select>
           </form>
           <section class="submit-button-section">
             <button class="submit-button" id="submitButton">Let's Go!</button>
           </section>
-          <section class="book-button-section ">
+          <section class="book-button-section">
             <button class="book-button hidden" id="bookbutton">Book it!</button>
           </section>
         </section>
@@ -56,24 +112,30 @@
           <h2 class="trip-total" id="tripEstimate"></h2>
         </section>
         <section class="all-trips-container">
-          <section class="past-trip-section" id="pastTrips">
+          <section class="traveler-past-trips" id="travelerPastTrips">
             <section class="'header">
-            <h2 class="past-trip-header">My Past Trips</h2>
+              <h2 class="trip-header">Past Trips</h2>
             </section>
+            <section class="past-trip-section" id="pastTrips"></section>
           </section>
-          <section class="pending-trip-section" id="pendingTrips">
+          <section class="traveler-pending-trips" id="travelerPendingTrips">
             <section class="header">
-              <h2 class="pending-trip-header">My Pending Trips</h2>
+              <h2 class="trip-header">Pending Trips</h2>
             </section>
+            <section class="pending-trip-section" id="pendingTrips"></section>
           </section>
-          <section class="upcoming-trips-section" id="upcomingTrips">
+          <section class="traveler-upcoming-trips" id="travelerUpcomingTrips">
             <section class="header">
-              <h2 class="upcoming-trip-header">My Upcoming Trips</h2>
+              <h2 class="trip-header">Upcoming Trips</h2>
+              <section
+                class="upcoming-trips-section"
+                id="upcomingTrips"
+              ></section>
             </section>
           </section>
         </section>
       </section>
-      </main>
- <script src="bundle.js"></script>
-</body>
+    </main>
+    <script src="bundle.js"></script>
+  </body>
 </html>

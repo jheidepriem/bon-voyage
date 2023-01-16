@@ -1,7 +1,5 @@
 body {
   background-color: #e3d5ca;
-  /* background-image: url(../images/paris.jpg);
-  opacity: .5; */
   display: flex;
   flex-direction: column;
   font-family: "Lora", serif;
@@ -19,7 +17,7 @@ h2 {
 }
 
 h3 {
-  font-size: 10px;
+  font-size: 13px;
   margin: 4px;
 }
 
@@ -88,6 +86,7 @@ input {
 }
 
 .application-title {
+  color: white;
   align-items: flex-end;
   display: flex;
   text-align: center;
@@ -97,12 +96,19 @@ input {
   align-items: center;
   border: 0px;
   border-radius: 4px;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.2);
   cursor: pointer;
   display: flex;
   flex-direction: row;
   height: 15vh;
   justify-content: center;
   width: 100%;
+}
+
+.trip-header {
+  text-align: center;
+  color: #888d8d;
+  font-weight: 700;
 }
 
 .book-button,
@@ -133,29 +139,30 @@ input {
 .pending-trip-section,
 .past-trip-section {
   align-items: center;
-  background-color: #8ca8c3;
+  background-color: #cfd8db;
   border-radius: 5px;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3);
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   height: 70vh;
-  justify-content: center;
+  justify-content: flex-start;
   margin: 1.5%;
   overflow: scroll;
   width: 33vw;
 }
 
 .yearly-expenses {
-  background-color:  #f0f0f0;
+  background-color: #f0f0f0;
   display: flex;
   justify-content: center;
 }
 
 .user-greeting-header {
-
-  display: flex;
   background-color: #f0f0f0;
+  display: flex;
   flex-direction: row-reverse;
   justify-content: center;
+  padding-top: 8px;
 }
 
 .travel-tracker-logo {
@@ -166,6 +173,7 @@ input {
 
 .trip-total {
   background-color: white;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
   text-align: center;
@@ -187,13 +195,14 @@ input {
 }
 
 .trip-image {
-  height: 150px;
+  height: 140px;
   width: 188px;
 }
 
 .trip-section {
   align-items: center;
-  background-color:#f0f0f0;
+  background-color: #f0f0f0;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   display: flex;
   justify-content: space-evenly;
