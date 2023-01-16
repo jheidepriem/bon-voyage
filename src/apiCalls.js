@@ -5,12 +5,22 @@ const fetchApiUrl = (path) => {
     .catch((error) => console.log(`${path} error`));
 };
 
-const fetchAllData = () => {
+const fetchAllData = (id) => {
   return Promise.all([
     fetchApiUrl("destinations"),
-    fetchApiUrl("traveler"),
+    fetchApiUrl(`travelers/${id}`),
     fetchApiUrl("trips"),
   ]);
 };
 
-export default { fetchAllData };
+const addData = (object, property) => {
+  return fetch(`http://localhost:3001/api/v1/${property}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(object),
+  }).then((response) => response.json());
+};
+
+export { fetchAllData, addData };
