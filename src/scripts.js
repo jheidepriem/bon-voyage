@@ -89,7 +89,7 @@ const displayUpComingTrips = () => {
       <section class='trip-section'>
       <section class="trip-info">
       <h3 class="trip-destination name">${destination[0].destination}</h3>
-      <h3 class="trip-date">${trip.date}</h3>
+      <h3 class="trip-date">${dayjs(trip.date).format('MMMM D, YYYY')}</h3>
       <h3 class="trip-duration">${trip.duration} day stay</h3>
       <h3 class="trip-status">${trip.status}</h3>
       </section>
@@ -109,7 +109,7 @@ const displayPastTrips = () => {
       <section class='trip-section'>
       <section class="trip-info">
       <h3 class="trip-destination name">${destination[0].destination}</h3>
-      <h3 class="trip-date">${trip.date}</h3>
+      <h3 class="trip-date">${dayjs(trip.date).format('MMMM D, YYYY')}</h3>
       <h3 class="trip-duration">${trip.duration} day stay</h3>
       <h3 class="trip-status">${trip.status}</h3>
       </section>
@@ -129,7 +129,7 @@ const displayPendingTrips = () => {
       <section class='trip-section'>
       <section class="trip-info">
       <h3 class="trip-destination name">${destination[0].destination}</h3>
-      <h3 class="trip-date">${trip.date}</h3>
+      <h3 class="trip-date">${dayjs(trip.date).format('MMMM D, YYYY')}</h3>
       <h3 class="trip-duration">${trip.duration} day stay</h3>
       <h3 class="trip-status">${trip.status}</h3>
       </section>
