@@ -86,7 +86,7 @@ npm test
 
 <table>
     <tr>
-        <td> Josephine Heidepriem <a https://github.com/jheidepriem">GH</td>
+        <td> Josephine Heidepriem <a href="https://github.com/jheidepriem">GH</td>
     </tr>
 <td><img src="https://avatars.githubusercontent.com/u/108428451?v=4" alt="Josephine Heidepriem"
  width="150" height="auto" /></td>
