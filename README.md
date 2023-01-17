@@ -32,11 +32,11 @@
 
 ## Artists
 
-- All images sourced from [here](https://stock.adobe.com/)
+- All images sourced from [Here](https://stock.adobe.com/)
 
 ## Server Download Instructions
 
-- In order to do install, you must download the necessary server and api [here](https://github.com/turingschool-examples/travel-tracker-api)
+- In order to do install, you must download the necessary server and api [Here](https://github.com/turingschool-examples/travel-tracker-api)
 - Clone this repo down to your local machine
 - Cd into the server directory (travel-tracker-api)
 - In the command line, run npm install
@@ -78,7 +78,7 @@ npm test
 
 ## Project Spec
 
-- [here](https://frontend.turing.edu/projects/travel-tracker.html)
+- [Here](https://frontend.turing.edu/projects/travel-tracker.html)
 
 ## Author 
 
