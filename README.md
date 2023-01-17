@@ -13,7 +13,7 @@
 
 ## Abstract
 
-Travel Tracker is an application that allows users to login, book travel, view their past, upcoming, and pending trips as well as see total yearly trip spending and estimates for future travels. 
+- Travel Tracker is an application that allows users to login, book travel, view their past, upcoming, and pending trips as well as see total yearly trip spending and estimates for future travels. 
 
 ## Deployed Site 
 
@@ -57,27 +57,28 @@ Travel Tracker is an application that allows users to login, book travel, view t
 
 ### JavaScript
 
-You have to be very intentional with where you add your feature code. This repo uses a tool called [webpack](https://webpack.js.org/) to combine many JavaScript files into one big file. Webpack enables you to have many, separate JavaScript files to keep your code organized and readable. Webpack expects all of your code files to be in a specific place, or else it doesn't know how to combine them all behind the scenes.
+- You have to be very intentional with where you add your feature code. This repo uses a tool called [webpack](https://webpack.js.org/) to combine many JavaScript files into one big file. Webpack enables you to have many, separate JavaScript files to keep your code organized and readable. Webpack expects all of your code files to be in a specific place, or else it doesn't know how to combine them all behind the scenes.
 
 ## Running Your Tests
 
-Run your test suite using the command:
+- Run your test suite using the command:
 
 ```bash
 npm test
 ```
 ## Wins
-Very happy with how the final product turned out.
-Basically learning GET/POST for the first time was really fun!
-Learning how to test for sad paths! 
+- Very happy with how the final product turned out.
+- Basically learning GET/POST for the first time was really fun!
+- Learning how to test for sad paths! 
 
 ## Challenges
 
-Problem solving through how I wanted to set up my classes and how I wanted everything to interact in the scripts file. The planning took a lot longer than I expected. 
+- Problem solving through how I wanted to set up my classes and how I wanted everything to interact in the scripts file. 
+- The planning took a lot longer than I expected. 
 
 ## Project Spec
 
-[here](https://frontend.turing.edu/projects/travel-tracker.html)
+- [here](https://frontend.turing.edu/projects/travel-tracker.html)
 
 ## Author 
 
