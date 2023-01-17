@@ -82,8 +82,6 @@ npm test
 
 ## Author 
 
-[GH](https://github.com/jheidepriem/travel-tracker)
-
 <table>
     <tr>
         <td> Josephine Heidepriem <a href="https://github.com/jheidepriem">GH</td>
