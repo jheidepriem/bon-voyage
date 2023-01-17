@@ -32,11 +32,11 @@ Travel Tracker is an application that allows users to login, book travel, view t
 
 ## Artists
 
-- All images sourced from (here)[https://stock.adobe.com/]
+- All images sourced from [here](https://stock.adobe.com/)
 
 ## Server Download Instructions
 
-- In order to do install, you must download the necessary server and api (here)[https://github.com/turingschool-examples/travel-tracker-api]
+- In order to do install, you must download the necessary server and api [here](https://github.com/turingschool-examples/travel-tracker-api)
 - Clone this repo down to your local machine
 - Cd into the server directory (travel-tracker-api)
 - In the command line, run npm install
@@ -77,10 +77,10 @@ Problem solving through how I wanted to set up my classes and how I wanted every
 
 ## Project Spec
 
-(here)[https://frontend.turing.edu/projects/travel-tracker.html]
+[here](https://frontend.turing.edu/projects/travel-tracker.html)
 
 ## Author 
 
-(GH)[https://github.com/jheidepriem/travel-tracker]
+[GH](https://github.com/jheidepriem/travel-tracker)
 
 
