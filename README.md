@@ -83,4 +83,13 @@ Problem solving through how I wanted to set up my classes and how I wanted every
 
 [GH](https://github.com/jheidepriem/travel-tracker)
 
+<table>
+    <tr>
+        <td> Josephine Heidepriem <a https://github.com/jheidepriem">GH</td>
+    </tr>
+<td><img src="https://avatars.githubusercontent.com/u/108428451?v=4" alt="Josephine Heidepriem"
+ width="150" height="auto" /></td>
+</table>
+  
+
 
