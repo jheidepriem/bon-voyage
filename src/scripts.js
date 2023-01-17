@@ -62,9 +62,11 @@ const addTravelerTripInfo = () => {
 };
 
 const addDestToDropDown = () => {
-  return destinationsData.sort((a,b) => a.destination.localeCompare(b.destination)).forEach((destination) => {
-    dropDownMenu.innerHTML += `<option value="${destination.destination}">${destination.destination}</option>`;
-  })
+  return destinationsData
+    .sort((a, b) => a.destination.localeCompare(b.destination))
+    .forEach((destination) => {
+      dropDownMenu.innerHTML += `<option value="${destination.destination}">${destination.destination}</option>`;
+    });
 };
 
 const showUserName = () => {
@@ -177,6 +179,14 @@ const addTripToPending = (e) => {
 };
 
 const displayTripTotal = () => {
+  if (
+    !dateInput.value ||
+    !durationInput.value ||
+    !numTravelerInput.value ||
+    !dropDownMenu.value
+  ) {
+    return (tripTotalSection.innerText = "Please input values");
+  }
   const tripObj = [
     {
       id: tripsData.length + 1,
@@ -189,20 +199,16 @@ const displayTripTotal = () => {
       suggestedActivities: [],
     },
   ];
-  if (
-    dateInput.value &&
-    durationInput.value &&
-    numTravelerInput.value &&
-    dropDownMenu.value
-  )
-    tripTotalSection.innerText = `Your trip estimate is $${trip.calculateTripCost(
-      destinationsData,
-      tripObj
-    )} 
+
+  tripTotalSection.innerText = `Your trip estimate is $${trip.calculateTripCost(
+    destinationsData,
+    tripObj
+  )} 
             (includes a 10% travel agent booking fee)`;
   show(tripTotalSection);
   hide(submitButton);
   show(bookButton);
+  return;
 };
 
 const getUserLogIn = (userNameInput, passwordInput) => {
