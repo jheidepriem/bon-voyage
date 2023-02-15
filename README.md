@@ -22,7 +22,6 @@
 ## Technologies
 - HTML
 - CSS
-- SCSS/SASS
 - JavaScript
 - Mocha/Chai
 - Webpack
